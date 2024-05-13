@@ -6,13 +6,19 @@
   extraConfigLua = ''
       local dict = require("cmp_dictionary")
     	dict.setup({
-        paths = { "${./en.dict}" },
-    	  exact_length = -1,
+    	  exact = -1,
     	  first_case_insensitive = true,
-    	  document = {
-          enable = false,
-          command = { "wn", "%s", "-over" },
-        },
+    	  document = false,
+    	  document_command = "wn %s -over",
+    	  sqlite = false,
+    	  max_items = 5,
+    	  capacity = 5,
+    	  debug = false,
     	})
+      dict.switcher({
+        spelllang = {
+          en = "${./en.dict}",
+        },
+      })
   '';
 }
