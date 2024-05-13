@@ -1,0 +1,5 @@
+{
+  plugins.neogen = {
+    enable = true;
+  };
+}
