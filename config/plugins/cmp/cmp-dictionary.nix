@@ -1,7 +1,7 @@
+{ pkgs-cmp-dict, ... }:
+
 {
-  plugins.cmp-dictionary = {
-    enable = true;
-  };
+  extraPlugins = [ pkgs-cmp-dict.vimPlugins.cmp-dictionary ];
 
   extraConfigLua = ''
       local dict = require("cmp_dictionary")
