@@ -41,7 +41,7 @@
     }
     {
       mode = [ "n" ];
-      key = "<f5>";
+      key = "<f11>";
       action = ''
         function()
         	require("dap").step_into()
