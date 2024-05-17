@@ -1,15 +1,44 @@
+{ pkgs-lldb, ... }:
+
 {
   plugins.dap = {
     enable = true;
+    adapters = {
+      executables = {
+        lldb = {
+          command = "${pkgs-lldb.llvmPackages.lldb}/bin/lldb-vscode";
+          args = [
+            "-i"
+            "dap"
+          ];
+        };
+      };
+    };
     configurations = {
       java = [
         {
+          name = "Launch Java Main Class";
           type = "java";
           request = "launch";
-          name = "Launch Java Main Class";
+        }
+      ];
+      cpp = [
+        {
+          name = "Launch C++ Executable";
+          type = "lldb";
+          request = "launch";
+          program.__raw = ''
+            function()
+              return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+            end
+          '';
+          cwd = "\${workspaceFolder}";
+          stopAtBeginningOfMainSubprogram = true;
+          args = { };
         }
       ];
     };
+    extensions.dap-ui.enable = true;
   };
 
   keymaps = [
