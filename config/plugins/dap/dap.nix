@@ -57,6 +57,19 @@
     }
     {
       mode = [ "n" ];
+      key = "<f17>";
+      action = ''
+        function()
+        	require("dap").terminate()
+        end
+      '';
+      lua = true;
+      options = {
+        desc = "DAP Terminate";
+      };
+    }
+    {
+      mode = [ "n" ];
       key = "<f10>";
       action = ''
         function()
