@@ -5,5 +5,6 @@
     ./comment.nix
     ./neogen.nix
     ./todo-comment.nix
+    ./trouble.nix
   ];
 }
