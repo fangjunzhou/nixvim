@@ -18,6 +18,9 @@
       signcolumn = "yes";
       # Search case sensitivity.
       ic = true;
+      # Treesitter folding.
+      foldmethod = "expr";
+      foldexpr = "nvim_treesitter#foldexpr()";
     };
 
     # Clipboard.
