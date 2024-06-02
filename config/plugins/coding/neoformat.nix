@@ -11,6 +11,7 @@
     nixpkgs-fmt
     # C, C++, C#, and Java
     astyle
+    clang-tools
     # CMake
     cmake-format
   ];
@@ -30,6 +31,14 @@
         "--style=google",
         "--indent=spaces=2",
         "--max-code-length=80",
+      },
+      stdin = true,
+    }
+    vim.g.neoformat_cpp_clangformat = {
+      exe = "${pkgs.clang-tools}/bin/clang-format",
+      args = {
+        "--style=file",
+        "--fallback-style=google",
       },
       stdin = true,
     }
