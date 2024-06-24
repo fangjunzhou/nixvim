@@ -35,7 +35,7 @@
       stdin = true,
     }
     vim.g.neoformat_cpp_clangformat = {
-      exe = "${pkgs.clang-tools}/bin/clang-format",
+      exe = "${pkgs.clang-tools_17}/bin/clang-format",
       args = {
         "--style=file",
         "--fallback-style=google",
