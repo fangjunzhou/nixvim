@@ -14,6 +14,11 @@
       clangd = {
         enable = true;
       };
+      rust-analyzer = {
+        enable = true;
+        installCargo = true;
+        installRustc = true;
+      };
       lua-ls = {
         enable = true;
       };
