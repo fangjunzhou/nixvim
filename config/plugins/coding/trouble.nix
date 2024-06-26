@@ -1,3 +1,5 @@
+{ helpers, ... }:
+
 {
   plugins.trouble = {
     enable = true;
@@ -6,12 +8,11 @@
     {
       mode = [ "n" ];
       key = "<leader>xx";
-      action = ''
+      action = helpers.mkRaw ''
         function()
           require("trouble").toggle()
         end
       '';
-      lua = true;
       options = {
         desc = "Toggle Trouble";
       };

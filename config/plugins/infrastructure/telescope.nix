@@ -1,3 +1,5 @@
+{ helpers, ... }:
+
 {
   plugins.telescope = {
     enable = true;
@@ -7,12 +9,11 @@
     {
       mode = [ "n" ];
       key = "<leader>/";
-      action = ''
+      action = helpers.mkRaw ''
         function()
           require("telescope.builtin").live_grep()
         end
       '';
-      lua = true;
       options = {
         desc = "Live Grep";
       };
@@ -20,12 +21,11 @@
     {
       mode = [ "n" ];
       key = "<leader><space>";
-      action = ''
+      action = helpers.mkRaw ''
         function()
           require("telescope.builtin").find_files()
         end
       '';
-      lua = true;
       options = {
         desc = "Find Files";
       };

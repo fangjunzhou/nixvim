@@ -1,3 +1,5 @@
+{ helpers, ... }:
+
 {
   plugins.flash = {
     enable = true;
@@ -7,12 +9,11 @@
     {
       mode = [ "n" "x" "o" ];
       key = "s";
-      action = ''
+      action = helpers.mkRaw ''
         function()
           require("flash").jump()
         end
       '';
-      lua = true;
       options = {
         desc = "Flash";
       };
@@ -20,12 +21,11 @@
     {
       mode = [ "n" "x" "o" ];
       key = "S";
-      action = ''
+      action = helpers.mkRaw ''
         function()
           require("flash").treesitter()
         end
       '';
-      lua = true;
       options = {
         desc = "Flash Treesitter";
       };
@@ -33,12 +33,11 @@
     {
       mode = [ "o" ];
       key = "r";
-      action = ''
+      action = helpers.mkRaw ''
         function()
           require("flash").remote()
         end
       '';
-      lua = true;
       options = {
         desc = "Remote Flash";
       };
@@ -46,12 +45,11 @@
     {
       mode = [ "x" "o" ];
       key = "R";
-      action = ''
+      action = helpers.mkRaw ''
         function()
           require("flash").treesitter_search()
         end
       '';
-      lua = true;
       options = {
         desc = "Treesitter Search";
       };
@@ -59,12 +57,11 @@
     {
       mode = [ "c" ];
       key = "<c-s>";
-      action = ''
+      action = helpers.mkRaw ''
         function()
           require("flash").toggle()
         end
       '';
-      lua = true;
       options = {
         desc = "Toggle Flash Search";
       };

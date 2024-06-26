@@ -1,3 +1,5 @@
+{ helpers, ... }:
+
 {
   plugins.neo-tree = {
     enable = true;
@@ -30,12 +32,11 @@
     {
       mode = [ "n" ];
       key = "<leader>e";
-      action = ''
+      action = helpers.mkRaw ''
         function()
           require("neo-tree.command").execute({ toggle = true })
         end
       '';
-      lua = true;
       options = {
         desc = "Toggle Neo-Tree";
       };

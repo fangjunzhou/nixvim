@@ -1,3 +1,5 @@
+{ helpers, ... }:
+
 {
   plugins.mini = {
     enable = true;
@@ -6,7 +8,7 @@
     {
       mode = [ "n" ];
       key = "<leader>bd";
-      action = ''
+      action = helpers.mkRaw ''
         function()
         	local bd = require("mini.bufremove").delete
         	if vim.bo.modified then
@@ -22,7 +24,6 @@
         	end
         end
       '';
-      lua = true;
       options = {
         desc = "Remove Buffere";
       };

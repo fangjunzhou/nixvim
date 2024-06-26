@@ -1,4 +1,4 @@
-{ pkgs-lldb, ... }:
+{ pkgs-lldb, helpers, ... }:
 
 {
   plugins.dap = {
@@ -45,12 +45,11 @@
     {
       mode = [ "n" ];
       key = "<f5>";
-      action = ''
+      action = helpers.mkRaw ''
         function()
         	require("dap").continue()
         end
       '';
-      lua = true;
       options = {
         desc = "DAP Continue";
       };
@@ -58,12 +57,11 @@
     {
       mode = [ "n" ];
       key = "<f17>";
-      action = ''
+      action = helpers.mkRaw ''
         function()
         	require("dap").terminate()
         end
       '';
-      lua = true;
       options = {
         desc = "DAP Terminate";
       };
@@ -71,12 +69,11 @@
     {
       mode = [ "n" ];
       key = "<f10>";
-      action = ''
+      action = helpers.mkRaw ''
         function()
         	require("dap").step_over()
         end
       '';
-      lua = true;
       options = {
         desc = "DAP Step Over";
       };
@@ -84,12 +81,11 @@
     {
       mode = [ "n" ];
       key = "<f11>";
-      action = ''
+      action = helpers.mkRaw ''
         function()
         	require("dap").step_into()
         end
       '';
-      lua = true;
       options = {
         desc = "DAP Step Into";
       };
@@ -97,12 +93,11 @@
     {
       mode = [ "n" ];
       key = "<f12>";
-      action = ''
+      action = helpers.mkRaw ''
         function()
         	require("dap").step_out()
         end
       '';
-      lua = true;
       options = {
         desc = "DAP Step Out";
       };
@@ -110,12 +105,11 @@
     {
       mode = [ "n" ];
       key = "<f9>";
-      action = ''
+      action = helpers.mkRaw ''
         function()
         	require("dap").toggle_breakpoint()
         end
       '';
-      lua = true;
       options = {
         desc = "DAP Toggle Breakpoints";
       };
@@ -123,12 +117,11 @@
     {
       mode = [ "n" ];
       key = "<f21>";
-      action = ''
+      action = helpers.mkRaw ''
         function()
         	require("dap").clear_breakpoints()
         end
       '';
-      lua = true;
       options = {
         desc = "DAP Clear Breakpoints";
       };
