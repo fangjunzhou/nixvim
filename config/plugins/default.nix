@@ -8,5 +8,6 @@
     ./coding
     ./editor
     ./visuals
+    ./misc
   ];
 }
