@@ -19,6 +19,9 @@
         installCargo = true;
         installRustc = true;
       };
+      pyright = {
+        enable = true;
+      };
       lua-ls = {
         enable = true;
       };
