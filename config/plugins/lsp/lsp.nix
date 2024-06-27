@@ -7,6 +7,9 @@
 
   plugins.lsp = {
     enable = true;
+    preConfig = ''
+      require("neoconf").setup({})
+    '';
     servers = {
       cmake = {
         enable = true;
