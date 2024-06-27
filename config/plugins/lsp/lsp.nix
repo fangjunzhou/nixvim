@@ -9,6 +9,7 @@
     enable = true;
     preConfig = ''
       require("neoconf").setup({})
+      require("neodev").setup({})
     '';
     servers = {
       cmake = {
