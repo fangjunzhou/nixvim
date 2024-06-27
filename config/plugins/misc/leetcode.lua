@@ -83,7 +83,10 @@ opts = {
     theme = {},
 
     ---@type boolean
-    image_support = false
+    image_support = false,
+
+    ---@type boolean
+    show_menu_when_expire = false,
 }
 
 require("leetcode").setup(opts)
