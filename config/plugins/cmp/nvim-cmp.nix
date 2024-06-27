@@ -1,21 +1,24 @@
+{ helpers, ... }:
 {
   plugins = {
     cmp = {
       enable = true;
       autoEnableSources = false;
       settings = {
-        snippet.expand = "luasnip";
-        sources = {
-          __raw = ''
-            cmp.config.sources({
-              { name = "nvim_lsp" },
-              { name = "latex_symbols", option = { strategy = 2 } },
-              { name = "luasnip" },
-              { name = "path" },
-              { name = "dictionary" },
-            })
-          '';
-        };
+        snippet.expand = ''
+          function(args)
+            require('luasnip').lsp_expand(args.body)
+          end
+        '';
+        sources = helpers.mkRaw ''
+          cmp.config.sources({
+            { name = "nvim_lsp" },
+            { name = "latex_symbols", option = { strategy = 2 } },
+            { name = "luasnip" },
+            { name = "path" },
+            { name = "dictionary" },
+          })
+        '';
         mapping = {
           "<c-space>" = "cmp.mapping.complete()";
           "<c-b>" = "cmp.mapping.scroll_docs(-4)";
