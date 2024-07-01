@@ -1,5 +1,3 @@
-{ helpers, ... }:
-
 {
   plugins.trouble = {
     enable = true;
@@ -8,11 +6,7 @@
     {
       mode = [ "n" ];
       key = "<leader>xx";
-      action = helpers.mkRaw ''
-        function()
-          require("trouble").toggle()
-        end
-      '';
+      action = "<cmd>Trouble diagnostics toggle<cr>";
       options = {
         desc = "Toggle Trouble";
       };
