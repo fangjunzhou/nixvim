@@ -11,6 +11,9 @@
       require("neoconf").setup({})
       require("neodev").setup({})
     '';
+    capabilities = ''
+      capabilities = require("cmp_nvim_lsp").default_capabilities()
+    '';
     servers = {
       cmake = {
         enable = true;
