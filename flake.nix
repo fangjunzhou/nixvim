@@ -9,6 +9,7 @@
     nixpkgs-cmp-dict.url = "github:nixos/nixpkgs?rev=e5d1c87f5813afde2dda384ac807c57a105721cc";
     nixvim.url = "github:nix-community/nixvim";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    wgsl-analyzer.url = "github:wgsl-analyzer/wgsl-analyzer";
   };
 
   outputs =
@@ -28,6 +29,7 @@
           nixvim' = nixvim.legacyPackages.${system};
           pkgs-cmp-dict = import inputs.nixpkgs-cmp-dict { inherit system; };
           pkgs-lldb = import inputs.nixpkgs-lldb { inherit system; };
+          pkg-wgsl-analyzer = inputs.wgsl-analyzer.packages.${system}.default;
           nixvimModule = {
             inherit pkgs;
             module = import ./config; # import the module directly
@@ -35,6 +37,7 @@
             extraSpecialArgs = {
               inherit pkgs-cmp-dict;
               inherit pkgs-lldb;
+              inherit pkg-wgsl-analyzer;
             };
           };
           nvim = nixvim'.makeNixvimWithModule nixvimModule;

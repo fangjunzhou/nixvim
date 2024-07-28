@@ -1,8 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, pkg-wgsl-analyzer, ... }:
 
 {
   extraPlugins = with pkgs.vimPlugins;[
     ltex_extra-nvim
+    pkg-wgsl-analyzer
   ];
 
   plugins.lsp = {
@@ -66,6 +67,44 @@
   };
 
   extraConfigLua = ''
+    vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+      pattern = "*.wgsl",
+      callback = function()
+        vim.bo.filetype = "wgsl"
+      end,
+    })
+
+    local lspconfig = require("lspconfig")
+
+    lspconfig.wgsl_analyzer.setup({
+      cmd = { "${pkg-wgsl-analyzer}/bin/wgsl_analyzer" }
+    })
+
+    vim.lsp.handlers["wgsl-analyzer/requestConfiguration"] = function(err, result, ctx, config)
+      return { 
+          success = true,
+          customImports = { _dummy_ = "dummy"},
+          shaderDefs = {},
+          trace = {
+              extension = false,
+              server = false,
+          },
+          inlayHints = {
+              enabled = false,
+              typeHints = false,
+              parameterHints = false,
+              structLayoutHints = false,
+              typeVerbosity = "inner",
+          },
+          diagnostics = {
+              typeErrors = true,
+              nagaParsingErrors = true,
+              nagaValidationErrors = true,
+              nagaVersion = "main",
+          }
+      }
+    end
+
     -- Use LspAttach autocommand to only map the following keys
     -- after the language server attaches to the current buffer
     vim.api.nvim_create_autocmd("LspAttach", {
