@@ -6,5 +6,6 @@
     ./neogen.nix
     ./todo-comment.nix
     ./trouble.nix
+    ./vim-suda.nix
   ];
 }
