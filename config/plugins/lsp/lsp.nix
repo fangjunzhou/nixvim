@@ -36,6 +36,9 @@
       nil-ls = {
         enable = true;
       };
+      ts-ls = {
+        enable = true;
+      };
       ltex = {
         enable = true;
         settings = {
