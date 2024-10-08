@@ -1,4 +1,5 @@
 {
+  plugins.web-devicons.enable = true;
   imports = [
     ./dressing.nix
     ./bufferline.nix

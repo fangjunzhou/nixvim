@@ -2,12 +2,12 @@
   plugins.lualine = {
     enable = true;
     # Enable global status line.
-    globalstatus = true;
-    componentSeparators = {
+    settings.options.globalstatus = true;
+    settings.options.component_separators = {
       left = "|";
       right = "|";
     };
-    sectionSeparators = {
+    settings.options.section_separators = {
       left = "";
       right = "";
     };
