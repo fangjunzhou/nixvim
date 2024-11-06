@@ -32,5 +32,15 @@ require("comment-divider").setup({
 			lineSeperator = "-",
 			lineEnd = "#",
     },
+		javascript = {
+			lineStart = "/*",
+			lineSeperator = "-",
+			lineEnd = "*/",
+		},
+		typescript = {
+			lineStart = "/*",
+			lineSeperator = "-",
+			lineEnd = "*/",
+		},
 	},
 })
