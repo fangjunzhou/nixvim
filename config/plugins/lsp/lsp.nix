@@ -39,6 +39,9 @@
       ts-ls = {
         enable = true;
       };
+      jsonls = {
+        enable = true;
+      };
       ltex = {
         enable = true;
         settings = {

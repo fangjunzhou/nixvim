@@ -42,5 +42,11 @@
       },
       stdin = true,
     }
+    vim.g.neoformat_json_jq = {
+      exe = "${pkgs.jq}/bin/jq",
+      args = { "." },
+      stdin = true,
+      valid_exit_codes = { 0 },
+    }
   '';
 }
