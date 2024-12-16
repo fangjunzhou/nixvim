@@ -30,7 +30,7 @@
       glsl_analyzer = {
         enable = true;
       };
-      pyright = {
+      pylsp = {
         enable = true;
       };
       lua_ls = {
