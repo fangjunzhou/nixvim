@@ -2,7 +2,7 @@
 {
   plugins.noice = {
     enable = true;
-    lsp.progress.enabled = false;
+    settings.lsp.progress.enabled = false;
   };
   keymaps = [
     {

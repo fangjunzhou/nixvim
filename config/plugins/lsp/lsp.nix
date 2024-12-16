@@ -22,7 +22,7 @@
       clangd = {
         enable = true;
       };
-      rust-analyzer = {
+      rust_analyzer = {
         enable = true;
         installCargo = true;
         installRustc = true;
@@ -30,13 +30,13 @@
       pyright = {
         enable = true;
       };
-      lua-ls = {
+      lua_ls = {
         enable = true;
       };
-      nil-ls = {
+      nil_ls = {
         enable = true;
       };
-      ts-ls = {
+      ts_ls = {
         enable = true;
       };
       jsonls = {
