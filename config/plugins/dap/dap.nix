@@ -88,6 +88,23 @@
             end
           '';
         }
+        {
+          name = "Attach to Python Process";
+          type = "python";
+          request = "attach";
+          connect = {
+            host = "127.0.0.1";
+            port = 5678; # Ensure this matches your debugpy setup
+          };
+          mode = "remote";
+          cwd = "\${workspaceFolder}";
+          pathMappings = [
+            {
+              localRoot = "\${workspaceFolder}"; # Adjust to match your local path
+              remoteRoot = "."; # Adjust to match the remote path
+            }
+          ];
+        }
       ];
     };
     extensions.dap-ui.enable = true;
