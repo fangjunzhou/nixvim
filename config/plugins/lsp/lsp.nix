@@ -32,30 +32,6 @@
       };
       pyright = {
         enable = true;
-        onAttach.function = ''
-          client.handlers["textDocument/publishDiagnostics"] = function(...)
-              local result = select(2, ...)
-              result.diagnostics = {}
-          end
-          client.server_capabilities.codeActionProvider = false
-        '';
-      };
-      pylsp = {
-        enable = true;
-        settings = {
-          plugins = {
-            jedi_hover.enabled = false;
-            jedi_references.enabled = false;
-            rope_autoimport.enabled = true;
-            rope_completion.enabled = true;
-          };
-        };
-        onAttach.function = ''
-          client.server_capabilities.hoverProvider = false
-          client.server_capabilities.definitionProvider = false
-          client.server_capabilities.referenceProvider = false
-          client.server_capabilities.renameProvider = false
-        '';
       };
       lua_ls = {
         enable = true;
