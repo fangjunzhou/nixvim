@@ -30,12 +30,22 @@
       glsl_analyzer = {
         enable = true;
       };
+      pyright = {
+        enable = true;
+        onAttach.function = ''
+          client.handlers["textDocument/publishDiagnostics"] = function(...)
+              local result = select(2, ...)
+              result.diagnostics = {}
+          end
+        '';
+      };
       pylsp = {
         enable = true;
         settings = {
           plugins = {
             flake8.enabled = true;
             rope_autoimport.enabled = true;
+            rope_completion.enabled = true;
           };
         };
       };
