@@ -1,5 +1,6 @@
 {
   imports = [
+    ./clipboard-image.nix
     ./config-local.nix
     ./flash.nix
     ./mini.nix
