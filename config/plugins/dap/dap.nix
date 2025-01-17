@@ -46,14 +46,14 @@
     configurations = {
       java = [
         {
-          name = "Launch Java Main Class";
+          name = "launch-java-main-class";
           type = "java";
           request = "launch";
         }
       ];
       cpp = [
         {
-          name = "Launch C++ Executable";
+          name = "launch-cpp-executable";
           type = "lldb";
           request = "launch";
           program.__raw = ''
@@ -63,12 +63,13 @@
           '';
           cwd = "\${workspaceFolder}";
           stopAtBeginningOfMainSubprogram = true;
+          # TODO: Support C++ launch argument.
           args = { };
         }
       ];
       python = [
         {
-          name = "Launch Python File";
+          name = "launch-python-file";
           type = "python";
           request = "launch";
           program = "\${file}";
@@ -89,7 +90,7 @@
           '';
         }
         {
-          name = "Attach to Python Process";
+          name = "attach-to-python-process";
           type = "python";
           request = "attach";
           connect = {
