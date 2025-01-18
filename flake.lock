@@ -291,22 +291,6 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/5487e69da40cbd611ab2cadee0b4637225f7cfae.tar.gz"
       }
     },
-    "nixpkgs-lldb": {
-      "locked": {
-        "lastModified": 1714921154,
-        "narHash": "sha256-V9rYvNMTJVgMTj5EtFjnJdK4qRiP+RQKO84sMpKdNOw=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "8c429107e982d4debdb67f2c3e3402a23a308f05",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "8c429107e982d4debdb67f2c3e3402a23a308f05",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1734119587,
@@ -393,7 +377,6 @@
         "flake-parts": "flake-parts",
         "nixpkgs": "nixpkgs",
         "nixpkgs-cmp-dict": "nixpkgs-cmp-dict",
-        "nixpkgs-lldb": "nixpkgs-lldb",
         "nixvim": "nixvim",
         "wgsl-analyzer": "wgsl-analyzer"
       }

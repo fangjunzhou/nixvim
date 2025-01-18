@@ -1,4 +1,4 @@
-{ pkgs-lldb, helpers, ... }:
+{ system, pkgs, helpers, ... }:
 
 {
   plugins.dap = {
@@ -6,7 +6,7 @@
     adapters = {
       executables = {
         lldb = {
-          command = "${pkgs-lldb.llvmPackages.lldb}/bin/lldb-vscode";
+          command = "${pkgs.llvmPackages.lldb}/bin/lldb-vscode";
           args = [
             "-i"
             "dap"
@@ -199,6 +199,14 @@
   ];
 
   extraConfigLua = ''
+    ${(
+    if system == "aarch64-darwin" then
+      ''
+        vim.fn.setenv("LLDB_DEBUGSERVER_PATH", "/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/Resources/debugserver")
+      ''
+    else ""
+    )}
+    -- Dap UI.
     local dap, dapui = require("dap"), require("dapui")
     dap.listeners.before.attach.dapui_config = function()
       dapui.open()
