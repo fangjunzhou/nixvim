@@ -58,13 +58,24 @@
           request = "launch";
           program.__raw = ''
             function()
-              return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+              local executable = vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+              vim.g.dap_executable = executable
+              return executable
             end
           '';
           cwd = "\${workspaceFolder}";
           stopAtBeginningOfMainSubprogram = true;
-          # TODO: Support C++ launch argument.
-          args = { };
+          args.__raw = ''
+            function()
+              local executable = vim.g.dap_executable
+              local input = vim.fn.input("Arguments (space-separated): ")
+              if input == "" then
+                return {}
+              else
+                return vim.split(input, " ")
+              end
+            end
+          '';
         }
       ];
       python = [
@@ -199,12 +210,10 @@
   ];
 
   extraConfigLua = ''
-    ${(
-    if system == "aarch64-darwin" then
+    ${pkgs.lib.optionalString (system == "aarch64-darwin") (
       ''
         vim.fn.setenv("LLDB_DEBUGSERVER_PATH", "/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/Resources/debugserver")
       ''
-    else ""
     )}
     -- Dap UI.
     local dap, dapui = require("dap"), require("dapui")
