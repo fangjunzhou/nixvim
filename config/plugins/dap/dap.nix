@@ -119,7 +119,13 @@
         }
       ];
     };
-    extensions.dap-ui.enable = true;
+    extensions = {
+      dap-go = {
+        enable = true;
+        delve.path = "${pkgs.delve}/bin/dlv";
+      };
+      dap-ui.enable = true;
+    };
   };
 
   keymaps = [
