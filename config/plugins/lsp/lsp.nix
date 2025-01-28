@@ -21,6 +21,7 @@
       };
       clangd = {
         enable = true;
+        package = pkgs.llvmPackages_19.clang-tools;
       };
       rust_analyzer = {
         enable = true;

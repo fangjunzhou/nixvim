@@ -11,7 +11,7 @@
     nixpkgs-fmt
     # C, C++, C#, and Java
     astyle
-    clang-tools
+    llvmPackages_19.clang-tools
     # CMake
     cmake-format
   ];
@@ -35,7 +35,7 @@
       stdin = true,
     }
     vim.g.neoformat_cpp_clangformat = {
-      exe = "${pkgs.clang-tools_17}/bin/clang-format",
+      exe = "${pkgs.llvmPackages_19.clang-tools}/bin/clang-format",
       args = {
         "--style=file",
         "--fallback-style=google",
