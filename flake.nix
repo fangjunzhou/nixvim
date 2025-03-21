@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-cmp-dict.url = "github:nixos/nixpkgs?rev=e5d1c87f5813afde2dda384ac807c57a105721cc";
     nixvim.url = "github:nix-community/nixvim";
     flake-parts.url = "github:hercules-ci/flake-parts";
@@ -24,6 +25,8 @@
         let
           nixvimLib = nixvim.lib.${system};
           nixvim' = nixvim.legacyPackages.${system};
+          pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
+          pkgs-unfree = import inputs.nixpkgs { inherit system; config.allowUnfree = true; };
           pkgs-cmp-dict = import inputs.nixpkgs-cmp-dict { inherit system; };
           pkg-wgsl-analyzer = inputs.wgsl-analyzer.packages.${system}.default;
           nixvimModule = {
@@ -32,6 +35,8 @@
             # You can use `extraSpecialArgs` to pass additional arguments to your module files
             extraSpecialArgs = {
               inherit system;
+              inherit pkgs-unstable;
+              inherit pkgs-unfree;
               inherit pkgs-cmp-dict;
               inherit pkg-wgsl-analyzer;
             };
