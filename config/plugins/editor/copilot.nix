@@ -4,7 +4,6 @@
   plugins.copilot-vim = {
     enable = true;
     package = pkgs-unfree.vimPlugins.copilot-vim;
-    autoLoad = false;
   };
   plugins.copilot-chat = {
     enable = true;
@@ -23,6 +22,10 @@
             detail = "Use @<Tab> or /<Tab> for options.";
             insert = "<Tab>";
           };
+          jump_to_diff = {
+            insert = "";
+            normal = "";
+          };
         };
         prompts = {
           Explain = "Please explain how the following code works.";
@@ -33,4 +36,12 @@
         show_help = false;
       };
   };
+
+  extraConfigLua = ''
+    vim.api.nvim_create_autocmd("VimEnter", {
+      callback = function()
+        vim.cmd("Copilot disable")
+      end,
+    })
+  '';
 }
