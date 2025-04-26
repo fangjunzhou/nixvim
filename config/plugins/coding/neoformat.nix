@@ -25,6 +25,8 @@
   ];
 
   extraConfigLua = ''
+    vim.g.neoformat_enabled_slang = { "clangformat" }
+
     vim.g.neoformat_java_astyle = {
       exe = "${pkgs.astyle}/bin/astyle",
       args = {
@@ -35,6 +37,14 @@
       stdin = true,
     }
     vim.g.neoformat_cpp_clangformat = {
+      exe = "${pkgs.llvmPackages_19.clang-tools}/bin/clang-format",
+      args = {
+        "--style=file",
+        "--fallback-style=google",
+      },
+      stdin = true,
+    }
+    vim.g.neoformat_slang_clangformat = {
       exe = "${pkgs.llvmPackages_19.clang-tools}/bin/clang-format",
       args = {
         "--style=file",

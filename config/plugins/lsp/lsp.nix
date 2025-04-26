@@ -1,4 +1,4 @@
-{ pkgs, pkg-wgsl-analyzer, ... }:
+{ pkgs, pkgs-unstable, pkg-wgsl-analyzer, ... }:
 
 {
   extraPlugins = with pkgs.vimPlugins;[
@@ -33,6 +33,13 @@
       };
       glsl_analyzer = {
         enable = true;
+      };
+      slangd = {
+        enable = true;
+        package = pkgs-unstable.shader-slang;
+        filetypes = [
+          "slang"
+        ];
       };
       pyright = {
         enable = true;
