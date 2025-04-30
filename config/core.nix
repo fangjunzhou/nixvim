@@ -28,5 +28,11 @@
       register = "unnamedplus";
       providers.xclip.enable = true;
     };
+
+    # Filetypes.
+    filetype.extension = {
+      "slang" = "slang";
+    };
+
   };
 }
