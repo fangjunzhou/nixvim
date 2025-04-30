@@ -76,6 +76,7 @@
               end
             end
           '';
+          showDisassembly = "never";
         }
       ];
       python = [
@@ -209,6 +210,30 @@
       '';
       options = {
         desc = "DAP Clear Breakpoints";
+      };
+    }
+    {
+      mode = [ "n" ];
+      key = "<leader>su";
+      action = helpers.mkRaw ''
+        function()
+        	require("dap").up()
+        end
+      '';
+      options = {
+        desc = "DAP Stack Up";
+      };
+    }
+    {
+      mode = [ "n" ];
+      key = "<leader>sd";
+      action = helpers.mkRaw ''
+        function()
+        	require("dap").down()
+        end
+      '';
+      options = {
+        desc = "DAP Stack Down";
       };
     }
   ];
