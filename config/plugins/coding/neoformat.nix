@@ -20,7 +20,13 @@
   autoCmd = [
     {
       event = [ "BufWritePre" ];
-      command = "Neoformat";
+      pattern = [ "*.slang" ];
+      command = ''lua vim.lsp.buf.format({ async = false })'';
+    }
+    {
+      event = [ "BufWritePre" ];
+      pattern = [ "*" ];
+      command = ''lua if vim.bo.filetype ~= "slang" then vim.cmd("Neoformat") end'';
     }
   ];
 
@@ -37,14 +43,6 @@
       stdin = true,
     }
     vim.g.neoformat_cpp_clangformat = {
-      exe = "${pkgs.llvmPackages_19.clang-tools}/bin/clang-format",
-      args = {
-        "--style=file",
-        "--fallback-style=google",
-      },
-      stdin = true,
-    }
-    vim.g.neoformat_slang_clangformat = {
       exe = "${pkgs.llvmPackages_19.clang-tools}/bin/clang-format",
       args = {
         "--style=file",
