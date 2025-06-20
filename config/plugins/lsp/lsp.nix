@@ -23,6 +23,9 @@
         enable = true;
         package = pkgs.llvmPackages_19.clang-tools;
       };
+      sourcekit = {
+        enable = true;
+      };
       rust_analyzer = {
         enable = true;
         installCargo = true;
