@@ -14,6 +14,8 @@
     llvmPackages_19.clang-tools
     # CMake
     cmake-format
+    # Swift
+    swift-format
   ];
 
   # Auto format auto command
