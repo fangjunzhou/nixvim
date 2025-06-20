@@ -31,7 +31,7 @@
           pkg-wgsl-analyzer = inputs.wgsl-analyzer.packages.${system}.default;
           nixvimModule = {
             inherit pkgs;
-            module = import ./config; # import the module directly
+            module = import ./config-default; # import the module directly
             # You can use `extraSpecialArgs` to pass additional arguments to your module files
             extraSpecialArgs = {
               inherit system;
@@ -41,7 +41,7 @@
               inherit pkg-wgsl-analyzer;
             };
           };
-          nvim = nixvim'.makeNixvimWithModule nixvimModule;
+          nvim-default = nixvim'.makeNixvimWithModule nixvimModule;
         in
         {
           checks = {
@@ -51,7 +51,7 @@
 
           packages = {
             # Lets you run `nix run .` to start nixvim
-            default = nvim;
+            default = nvim-default;
           };
         };
     };
