@@ -29,7 +29,7 @@
           pkgs-unfree = import inputs.nixpkgs { inherit system; config.allowUnfree = true; };
           pkgs-cmp-dict = import inputs.nixpkgs-cmp-dict { inherit system; };
           pkg-wgsl-analyzer = inputs.wgsl-analyzer.packages.${system}.default;
-          nixvimModule = {
+          nixvim-module-default = {
             inherit pkgs;
             module = import ./config-default; # import the module directly
             # You can use `extraSpecialArgs` to pass additional arguments to your module files
@@ -41,17 +41,29 @@
               inherit pkg-wgsl-analyzer;
             };
           };
-          nvim-default = nixvim'.makeNixvimWithModule nixvimModule;
+          nixvim-module-work = {
+            inherit pkgs;
+            module = import ./config-work; # import the module directly
+            # You can use `extraSpecialArgs` to pass additional arguments to your module files
+            extraSpecialArgs = {
+              inherit system;
+              inherit pkgs-unstable;
+              inherit pkgs-cmp-dict;
+            };
+          };
+          nvim-default = nixvim'.makeNixvimWithModule nixvim-module-default;
+          nvim-work = nixvim'.makeNixvimWithModule nixvim-module-work;
         in
         {
           checks = {
             # Run `nix flake check .` to verify that your config is not broken
-            default = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
+            default = nixvimLib.check.mkTestDerivationFromNixvimModule nixvim-module-default;
           };
 
           packages = {
             # Lets you run `nix run .` to start nixvim
             default = nvim-default;
+            work = nvim-work;
           };
         };
     };
