@@ -11,8 +11,14 @@
         enable = true;
       };
       clangd = {
-        enable = true;
+        enable = false;
         package = pkgs.llvmPackages_19.clang-tools;
+        settings = {
+          filetypes = [
+            "c"
+            "cpp"
+          ];
+        };
       };
       sourcekit = {
         enable = true;
