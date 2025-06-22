@@ -16,6 +16,8 @@
         filetypes = [
           "c"
           "cpp"
+          "objc"
+          "objcpp"
         ];
       };
       sourcekit = {
