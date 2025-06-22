@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, helpers, ... }:
 
 {
   plugins.lsp = {
@@ -11,17 +11,36 @@
         enable = true;
       };
       clangd = {
-        enable = false;
+        enable = true;
         package = pkgs.llvmPackages_19.clang-tools;
-        settings = {
-          filetypes = [
-            "c"
-            "cpp"
-          ];
-        };
+        filetypes = [
+          "c"
+          "cpp"
+        ];
       };
       sourcekit = {
         enable = true;
+        cmd = [
+          "xcrun"
+          "--toolchain"
+          "swift"
+          "sourcekit-lsp"
+        ];
+        settings = {
+          capabilities = {
+            workspace = {
+              didChangeWatchedFiles = {
+                dynamicRegistration = true;
+              };
+            };
+            textDocument = {
+              diagnostic = {
+                dynamicRegistration = true;
+                relatedDocumentSupport = true;
+              };
+            };
+          };
+        };
       };
       lua_ls = {
         enable = true;
