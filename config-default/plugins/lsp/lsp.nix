@@ -25,6 +25,27 @@
       };
       sourcekit = {
         enable = true;
+        cmd = [
+          "xcrun"
+          "--toolchain"
+          "swift"
+          "sourcekit-lsp"
+        ];
+        settings = {
+          capabilities = {
+            workspace = {
+              didChangeWatchedFiles = {
+                dynamicRegistration = true;
+              };
+            };
+            textDocument = {
+              diagnostic = {
+                dynamicRegistration = true;
+                relatedDocumentSupport = true;
+              };
+            };
+          };
+        };
       };
       rust_analyzer = {
         enable = true;
