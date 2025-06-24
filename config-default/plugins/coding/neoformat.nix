@@ -58,5 +58,11 @@
       stdin = true,
       valid_exit_codes = { 0 },
     }
+    vim.g.neoformat_swift_swift_format = {
+      exe = "xcrun",
+      args = { "swift-format", "format", "-"},
+      stdin = true,
+      valid_exit_codes = { 0 },
+    }
   '';
 }
