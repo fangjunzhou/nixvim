@@ -44,6 +44,9 @@
           };
         };
       };
+      pyright = {
+        enable = true;
+      };
       lua_ls = {
         enable = true;
       };
