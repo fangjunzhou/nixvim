@@ -28,6 +28,9 @@
           "swift"
           "sourcekit-lsp"
         ];
+        filetypes = [
+          "swift"
+        ];
         settings = {
           capabilities = {
             workspace = {
