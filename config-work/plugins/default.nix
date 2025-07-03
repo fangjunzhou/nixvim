@@ -2,6 +2,7 @@
   imports = [
     ./infrastructure
     ./lsp
+    ./dap
     ./treesitter
     ./cmp
     ./coding
