@@ -18,14 +18,20 @@
     swift-format
   ];
 
+  autoGroups = {
+    FormatOnWrite = { };
+  };
+
   # Auto format auto command
   autoCmd = [
     {
+      group = "FormatOnWrite";
       event = [ "BufWritePre" ];
       pattern = [ "*.slang" ];
       command = ''lua vim.lsp.buf.format({ async = false })'';
     }
     {
+      group = "FormatOnWrite";
       event = [ "BufWritePre" ];
       pattern = [ "*" ];
       command = ''lua if vim.bo.filetype ~= "slang" then vim.cmd("Neoformat") end'';
