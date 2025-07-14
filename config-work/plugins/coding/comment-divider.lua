@@ -12,6 +12,16 @@ require("comment-divider").setup({
 			lineSeperator = "-",
 			lineEnd = "*/",
 		},
+		objc = {
+			lineStart = "/*",
+			lineSeperator = "-",
+			lineEnd = "*/",
+		},
+		objcpp = {
+			lineStart = "/*",
+			lineSeperator = "-",
+			lineEnd = "*/",
+		},
 		python = {
 			lineStart = "#",
 			lineSeperator = "-",
