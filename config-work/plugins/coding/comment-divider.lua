@@ -22,6 +22,11 @@ require("comment-divider").setup({
 			lineSeperator = "-",
 			lineEnd = "*/",
 		},
+		swift = {
+			lineStart = "/*",
+			lineSeperator = "-",
+			lineEnd = "*/",
+		},
 		python = {
 			lineStart = "#",
 			lineSeperator = "-",
