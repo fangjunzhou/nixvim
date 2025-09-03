@@ -1,5 +1,23 @@
 { helpers, pkgs, ... }:
 
+let
+  matlabFormatter = pkgs.stdenvNoCC.mkDerivation {
+    pname = "matlab-formatter-py";
+    version = "unstable";
+    src = pkgs.fetchFromGitHub {
+      owner = "affenwiesel";
+      repo = "matlab-formatter-vscode";
+      rev = "43d722441dc6fcc41b1048010610c6ffe2087755";
+      sha256 = "sha256-Mo2uVdeyES0/RpVGnWnN7CDpIT4z6RNHvUJcABip9z8=";
+    };
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+    installPhase = ''
+      install -Dm644 formatter/matlab_formatter.py $out/share/matlab-formatter/matlab_formatter.py
+      makeWrapper ${pkgs.python3}/bin/python $out/bin/matlab_formatter.py \
+        --add-flags $out/share/matlab-formatter/matlab_formatter.py
+    '';
+  };
+in
 {
   extraPlugins = with pkgs.vimPlugins; [
     neoformat
@@ -16,6 +34,8 @@
     cmake-format
     # Swift
     swift-format
+    # Matlab formatter
+    matlabFormatter
   ];
 
   autoGroups = {
