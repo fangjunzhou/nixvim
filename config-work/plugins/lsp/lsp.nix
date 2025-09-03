@@ -60,6 +60,14 @@
       nil_ls = {
         enable = true;
       };
+      matlab_ls = {
+        enable = true;
+        settings = {
+          MATLAB = {
+            installPath = "/Applications/MATLAB_R2025a.app";
+          };
+        };
+      };
     };
   };
 
