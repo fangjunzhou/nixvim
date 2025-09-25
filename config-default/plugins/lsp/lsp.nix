@@ -22,6 +22,12 @@
       clangd = {
         enable = true;
         package = pkgs.llvmPackages_19.clang-tools;
+        filetypes = [
+          "c"
+          "cpp"
+          "objc"
+          "objcpp"
+        ];
       } // (if pkgs.stdenv.isDarwin then {
         cmd = [ "xcrun" "clangd" ];
       } else { });
@@ -32,6 +38,9 @@
           "--toolchain"
           "swift"
           "sourcekit-lsp"
+        ];
+        filetypes = [
+          "swift"
         ];
         settings = {
           capabilities = {
