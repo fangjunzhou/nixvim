@@ -22,7 +22,9 @@
       clangd = {
         enable = true;
         package = pkgs.llvmPackages_19.clang-tools;
-      };
+      } // (if pkgs.stdenv.isDarwin then {
+        cmd = [ "xcrun" "clangd" ];
+      } else { });
       sourcekit = {
         enable = true;
         cmd = [
