@@ -10,6 +10,9 @@ let
         rev = "v2.0.2";
         sha256 = "sha256-7ljjJ7UwN2U1xPCtsYbrKdnz6SGQGbM/HrxPTxNKlwo=";
       };
+      nvimSkipModules = [
+        "virt-column.config.types"
+      ];
     };
 in
 {

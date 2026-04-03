@@ -2,12 +2,11 @@
   description = "A nixvim configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-cmp-dict.url = "github:nixos/nixpkgs?rev=e5d1c87f5813afde2dda384ac807c57a105721cc";
-    nixvim.url = "github:nix-community/nixvim";
+    nixvim.url = "github:nix-community/nixvim/nixos-25.11";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    wgsl-analyzer.url = "github:wgsl-analyzer/wgsl-analyzer";
   };
 
   outputs =
@@ -28,7 +27,6 @@
           pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
           pkgs-unfree = import inputs.nixpkgs { inherit system; config.allowUnfree = true; };
           pkgs-cmp-dict = import inputs.nixpkgs-cmp-dict { inherit system; };
-          pkg-wgsl-analyzer = inputs.wgsl-analyzer.packages.${system}.default;
           nixvim-module-default = {
             inherit pkgs;
             module = import ./config-default; # import the module directly
@@ -38,7 +36,6 @@
               inherit pkgs-unstable;
               inherit pkgs-unfree;
               inherit pkgs-cmp-dict;
-              inherit pkg-wgsl-analyzer;
             };
           };
           nixvim-module-work = {

@@ -1,9 +1,8 @@
-{ pkgs, pkgs-unstable, pkg-wgsl-analyzer, ... }:
+{ pkgs, pkgs-unstable, ... }:
 
 {
   extraPlugins = with pkgs.vimPlugins;[
     ltex_extra-nvim
-    pkg-wgsl-analyzer
   ];
 
   plugins.lsp = {
