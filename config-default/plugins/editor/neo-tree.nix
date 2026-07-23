@@ -3,6 +3,14 @@
 {
   plugins.neo-tree = {
     enable = true;
+
+    filesystem = {
+      followCurrentFile = {
+        enabled = true;
+        leaveDirsOpen = false;
+      };
+    };
+
     settings = {
       window.mappings."h".__raw = ''
         function(state)
