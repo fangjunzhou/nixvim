@@ -12,6 +12,21 @@
     };
 
     settings = {
+      commands.copy_absolute_path.__raw = ''
+        function(state)
+          local path = state.tree:get_node():get_id()
+          vim.fn.setreg("+", path)
+          vim.notify("Copied: " .. path)
+        end
+      '';
+      commands.copy_relative_path.__raw = ''
+        function(state)
+          local path = state.tree:get_node():get_id()
+          local relative_path = vim.fn.fnamemodify(path, ":.")
+          vim.fn.setreg("+", relative_path)
+          vim.notify("Copied: " .. relative_path)
+        end
+      '';
       window.mappings."h".__raw = ''
         function(state)
           local node = state.tree:get_node()
@@ -34,6 +49,8 @@
           end
         end
       '';
+      window.mappings."gy" = "copy_relative_path";
+      window.mappings."gY" = "copy_absolute_path";
       window.mappings."s" = "";
       window.mappings."<space>" = "";
     };
