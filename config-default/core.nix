@@ -29,6 +29,13 @@
       providers.xclip.enable = true;
     };
 
+    # Send clipboard contents through the terminal during SSH sessions.
+    extraConfigLua = ''
+      if vim.env.SSH_TTY or vim.env.SSH_CONNECTION then
+        vim.g.clipboard = "osc52"
+      end
+    '';
+
     # Filetypes.
     filetype.extension = {
       "slang" = "slang";
