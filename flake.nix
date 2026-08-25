@@ -27,9 +27,9 @@
           pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
           pkgs-unfree = import inputs.nixpkgs { inherit system; config.allowUnfree = true; };
           pkgs-cmp-dict = import inputs.nixpkgs-cmp-dict { inherit system; };
-          nixvim-module-default = {
+          nixvim-module = {
             inherit pkgs;
-            module = import ./config-default; # import the module directly
+            module = import ./config; # import the module directly
             # You can use `extraSpecialArgs` to pass additional arguments to your module files
             extraSpecialArgs = {
               inherit system;
@@ -38,29 +38,17 @@
               inherit pkgs-cmp-dict;
             };
           };
-          nixvim-module-work = {
-            inherit pkgs;
-            module = import ./config-work; # import the module directly
-            # You can use `extraSpecialArgs` to pass additional arguments to your module files
-            extraSpecialArgs = {
-              inherit system;
-              inherit pkgs-unstable;
-              inherit pkgs-cmp-dict;
-            };
-          };
-          nvim-default = nixvim'.makeNixvimWithModule nixvim-module-default;
-          nvim-work = nixvim'.makeNixvimWithModule nixvim-module-work;
+          nvim = nixvim'.makeNixvimWithModule nixvim-module;
         in
         {
           checks = {
             # Run `nix flake check .` to verify that your config is not broken
-            default = nixvimLib.check.mkTestDerivationFromNixvimModule nixvim-module-default;
+            default = nixvimLib.check.mkTestDerivationFromNixvimModule nixvim-module;
           };
 
           packages = {
             # Lets you run `nix run .` to start nixvim
-            default = nvim-default;
-            work = nvim-work;
+            default = nvim;
           };
         };
     };
