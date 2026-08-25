@@ -31,18 +31,6 @@
       };
     }
     {
-      mode = [ "o" ];
-      key = "r";
-      action = helpers.mkRaw ''
-        function()
-          require("flash").remote()
-        end
-      '';
-      options = {
-        desc = "Remote Flash";
-      };
-    }
-    {
       mode = [ "x" "o" ];
       key = "R";
       action = helpers.mkRaw ''
