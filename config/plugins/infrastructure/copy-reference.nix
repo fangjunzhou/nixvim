@@ -22,7 +22,7 @@ in
   keymaps = [
     {
       mode = [ "n" "v" ];
-      key = "yr";
+      key = "gy";
       action = "<cmd>CopyReference line<cr>";
       options.desc = "Copy File Reference";
     }
