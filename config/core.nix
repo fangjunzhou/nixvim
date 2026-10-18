@@ -3,7 +3,13 @@
     # Color scheme.
     colorschemes.catppuccin = {
       enable = true;
-      settings.flavour = "macchiato";
+      settings = {
+        flavour = "auto";
+        background = {
+          light = "latte";
+          dark = "frappe";
+        };
+      };
     };
 
     # Options.
