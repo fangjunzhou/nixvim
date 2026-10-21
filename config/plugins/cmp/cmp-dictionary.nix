@@ -1,7 +1,12 @@
-{ pkgs-cmp-dict, ... }:
+{ pkgs, pkgs-cmp-dict, ... }:
 
 {
-  extraPlugins = [ pkgs-cmp-dict.vimPlugins.cmp-dictionary ];
+  # Keep the pinned dictionary plugin without pulling in its old nvim-cmp.
+  extraPlugins = [
+    (pkgs-cmp-dict.vimPlugins.cmp-dictionary.overrideAttrs (_: {
+      dependencies = [ pkgs.vimPlugins.nvim-cmp ];
+    }))
+  ];
 
   extraConfigLua = ''
       local dict = require("cmp_dictionary")

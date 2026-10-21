@@ -9,6 +9,8 @@
   extraPackages = with pkgs; [
     # Nix
     nixpkgs-fmt
+    # Lua
+    stylua
     # C, C++, C#, and Java
     astyle
     llvmPackages_19.clang-tools
@@ -17,6 +19,8 @@
     # Swift
     swift-format
   ];
+
+  globals.neoformat_enabled_lua = [ "stylua" ];
 
   autoGroups = {
     FormatOnWrite = { };

@@ -4,14 +4,11 @@
   plugins.neo-tree = {
     enable = true;
 
-    filesystem = {
-      followCurrentFile = {
-        enabled = true;
-        leaveDirsOpen = false;
-      };
-    };
-
     settings = {
+      filesystem.follow_current_file = {
+        enabled = true;
+        leave_dirs_open = false;
+      };
       commands.copy_absolute_path.__raw = ''
         function(state)
           local path = state.tree:get_node():get_id()

@@ -11,13 +11,14 @@
           end
         '';
         sources = helpers.mkRaw ''
-          cmp.config.sources({
+          {
+            { name = "lazydev", group_index = 0 },
             { name = "nvim_lsp" },
             { name = "latex_symbols", option = { strategy = 2 } },
             { name = "luasnip" },
             { name = "path" },
             { name = "dictionary" },
-          })
+          }
         '';
         mapping = {
           "<c-space>" = "cmp.mapping.complete()";
