@@ -14,6 +14,8 @@
 
     # Options.
     opts = {
+      # Reload externally changed files when the buffer has no unsaved edits.
+      autoread = true;
       # Indent settings.
       tabstop = 2;
       shiftwidth = 2;
@@ -28,6 +30,33 @@
       foldmethod = "expr";
       foldexpr = "nvim_treesitter#foldexpr()";
     };
+
+    # Set up reload checks before plugins so plugin errors cannot disable them.
+    extraConfigLuaPre = ''
+      do
+        local group = vim.api.nvim_create_augroup("ExternalFileChanges", { clear = true })
+        local function check_external_changes()
+          local mode = vim.api.nvim_get_mode().mode
+          if (mode == "n" or mode == "i") and vim.fn.getcmdwintype() == "" then
+            vim.cmd("checktime")
+          end
+        end
+
+        vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "InsertLeave" }, {
+          group = group,
+          callback = check_external_changes,
+        })
+
+        -- CursorHold does not repeat while idle; poll for edits from other agents.
+        local timer = vim.fn.timer_start(2000, check_external_changes, { ["repeat"] = -1 })
+        vim.api.nvim_create_autocmd("VimLeavePre", {
+          group = group,
+          callback = function()
+            vim.fn.timer_stop(timer)
+          end,
+        })
+      end
+    '';
 
     # Clipboard.
     clipboard = {
