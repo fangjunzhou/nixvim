@@ -1,45 +1,44 @@
 require("comment-divider").setup({
-	debug = false,
-	commentLength = 64,
-	defaultConfig = {
+	maxLineWidth = 80,
+	defaultStyle = {
 		lineStart = "#",
-		lineSeperator = "-",
+		barrierCharacter = "-",
 		lineEnd = "#",
 	},
-	languageConfig = {
+	filetypeStyles = {
 		cpp = {
 			lineStart = "/*",
-			lineSeperator = "-",
+			barrierCharacter = "-",
 			lineEnd = "*/",
 		},
 		python = {
 			lineStart = "#",
-			lineSeperator = "-",
+			barrierCharacter = "-",
 			lineEnd = "#",
 		},
 		lua = {
 			lineStart = "--",
-			lineSeperator = "-",
+			barrierCharacter = "-",
 			lineEnd = "--",
 		},
-    markdown = {
+		markdown = {
 			lineStart = "#",
-			lineSeperator = "-",
+			barrierCharacter = "-",
 			lineEnd = "#",
-    },
-    nix = {
+		},
+		nix = {
 			lineStart = "#",
-			lineSeperator = "-",
+			barrierCharacter = "-",
 			lineEnd = "#",
-    },
+		},
 		javascript = {
 			lineStart = "/*",
-			lineSeperator = "-",
+			barrierCharacter = "-",
 			lineEnd = "*/",
 		},
 		typescript = {
 			lineStart = "/*",
-			lineSeperator = "-",
+			barrierCharacter = "-",
 			lineEnd = "*/",
 		},
 	},
